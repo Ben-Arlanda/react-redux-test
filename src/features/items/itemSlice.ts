@@ -23,7 +23,7 @@ const initialState: ItemState = {
 
 // Async thunk to fetch items from the API
 export const fetchItems = createAsyncThunk('items/fetchItems', async () => {
-  const response = await axios.get('http://localhost:8080/api/items');  
+  const response = await axios.get('http://localhost:8080/items');
     return response.data;  // Return the fetched data (list of items)
 });
 
@@ -31,7 +31,15 @@ export const fetchItems = createAsyncThunk('items/fetchItems', async () => {
 const itemSlice = createSlice({
   name: 'items',
   initialState,
-  reducers: {},
+  selectedItem: null,
+  reducers: {
+    selectItem: (state, action) => {
+      state.selectItem = action.payload;
+    },
+    clearSelectedItem: (state, action) => {
+      state.selectedItem = null
+    }
+  },
   extraReducers: (builder) => {
     // Handle the loading, success, and error states
     builder
@@ -50,4 +58,5 @@ const itemSlice = createSlice({
   },
 });
 
+export const { selectItem, clearSelectedItem } = itemSlice.actions;
 export default itemSlice.reducer;
