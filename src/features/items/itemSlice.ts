@@ -34,7 +34,7 @@ const itemSlice = createSlice({
   selectedItem: null,
   reducers: {
     selectItem: (state, action) => {
-      state.selectItem = action.payload;
+      state.selectedItem = action.payload;
     },
     clearSelectedItem: (state, action) => {
       state.selectedItem = null
