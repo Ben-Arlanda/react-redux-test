@@ -9,10 +9,12 @@ const ItemList = () => {
 	const dispatch = useAppDispatch();
 	const { items, selectedItem } = useAppSelector((state) => state.items);
 
+	// Fetch the list of items from the API when the component mounts
 	useEffect(() => {
 		dispatch(fetchItems());
 	}, [dispatch]);
 
+	// handlelick to handle the dispatch and slectec items
 	const handleClick = (item) => {
 		dispatch(selectItem(item));
 	};

@@ -28,9 +28,11 @@ const ItemDetails = ({ item }) => {
 				<TabPanels>
 					<TabPanel>
 						<div className="py-4 text-white text-sm">
-							<p>String: {item.properties.propString}</p>
-							<p>Number: {item.properties.propNumber}</p>
-							<p>Date: {item.properties.date}</p>
+							{Object.entries(item.properties).map(([key, value]) => (
+								<p key={key}>
+									{key}: {value}
+								</p>
+							))}
 						</div>
 					</TabPanel>
 					<TabPanel>
